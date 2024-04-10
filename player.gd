@@ -32,3 +32,8 @@ func _physics_process(delta):
 		print("Collided with: ", collision.get_collider())
 		#get_tree().quit()
 	
+
+
+func _on_child_entered_tree(node):
+	if node.is_in_group("Boulder"):
+		get_tree().quit()

@@ -28,7 +28,7 @@ environment = SubResource("Environment_y0213")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ball" parent="." instance=ExtResource("2_xdu3v")]
+[node name="Ball" parent="." groups=["Player"] instance=ExtResource("2_xdu3v")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_rjl68")
 
@@ -42,3 +42,5 @@ current = true
 fov = 90.6
 
 [node name="TerrainController" parent="." instance=ExtResource("1_wvryj")]
+
+[connection signal="child_entered_tree" from="Ball" to="Ball" method="_on_child_entered_tree"]
