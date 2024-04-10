@@ -1,46 +1,43 @@
-[gd_scene load_steps=8 format=3 uid="uid://cya7jmnax4px"]
+[gd_scene load_steps=8 format=3 uid="uid://cno840nyxxpw2"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_pvljw"]
-[ext_resource type="PackedScene" uid="uid://bauhqxcytfrax" path="res://terrain_blocks/terrain_0.tscn" id="2_bg858"]
+[ext_resource type="Script" path="res://player.gd" id="1_rjl68"]
+[ext_resource type="PackedScene" uid="uid://odgtnpypykcy" path="res://terrain_controller.tscn" id="1_wvryj"]
+[ext_resource type="PackedScene" uid="uid://btjwsjvg8tmn0" path="res://ball.tscn" id="2_xdu3v"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rjh2i"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_om122"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_hdbg0"]
-sky_material = SubResource("ProceduralSkyMaterial_rjh2i")
+[sub_resource type="Sky" id="Sky_clgfu"]
+sky_material = SubResource("ProceduralSkyMaterial_om122")
 
-[sub_resource type="Environment" id="Environment_unsfr"]
+[sub_resource type="Environment" id="Environment_y0213"]
 background_mode = 2
-sky = SubResource("Sky_hdbg0")
+sky = SubResource("Sky_clgfu")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37ohu"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ya3rb"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_to3la"]
 
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_unsfr")
+environment = SubResource("Environment_y0213")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-script = ExtResource("1_pvljw")
+[node name="Ball" parent="." instance=ExtResource("2_xdu3v")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("1_rjl68")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_37ohu")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_to3la")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_ya3rb")
+[node name="Camera3D" type="Camera3D" parent="Ball/CollisionShape3D"]
+transform = Transform3D(1.66667, 0, 0, 0, 1.56153, 0.582589, 0, -0.582589, 1.56153, 0, 1.56738, 1.58143)
+fov = 90.6
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.945246, 0.32636, 0, -0.32636, 0.945246, 0, 1.11501, 0.850026)
-fov = 100.0
-
-[node name="Terrain_0" parent="." instance=ExtResource("2_bg858")]
+[node name="TerrainController" parent="." instance=ExtResource("1_wvryj")]

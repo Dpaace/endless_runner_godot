@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://bduyl35qjh72f"]
+
+[ext_resource type="Texture2D" uid="uid://c6xhekbk4hdru" path="res://textures/forest_floor_diff_4k.jpg" id="1_p6aaj"]
+[ext_resource type="Texture2D" uid="uid://dsf30t8sevagm" path="res://textures/forest_floor_nor_gl_4k.png" id="2_k5ylm"]
+[ext_resource type="Texture2D" uid="uid://5pkoyhwcgr6h" path="res://textures/forest_floor_rough_4k.png" id="3_p03mw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyv3y"]
+albedo_texture = ExtResource("1_p6aaj")
+roughness_texture = ExtResource("3_p03mw")
+normal_enabled = true
+normal_texture = ExtResource("2_k5ylm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qw1vn"]
+material = SubResource("StandardMaterial3D_dyv3y")
+size = Vector2(25, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3s7q0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mbs7q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7na7x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3pmv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wcb8a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lt25c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eb5vn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_05727"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_m3vsy"]
+
+[node name="TerrainBlock_1" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -10)
+mesh = SubResource("PlaneMesh_qw1vn")
+
+[node name="Block_0" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32861, 0.5, 3.50154)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_0"]
+shape = SubResource("BoxShape3D_3s7q0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_0"]
+mesh = SubResource("BoxMesh_mbs7q")
+
+[node name="Block_4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37786, 0.5, -1.90042)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_4"]
+shape = SubResource("BoxShape3D_3s7q0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_4"]
+mesh = SubResource("BoxMesh_mbs7q")
+
+[node name="Block_5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.959, 0.500001, -1.02312)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_5"]
+shape = SubResource("BoxShape3D_3s7q0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_5"]
+mesh = SubResource("BoxMesh_mbs7q")
+
+[node name="Block_6" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3305, 0.500001, 6.6706)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_6"]
+shape = SubResource("BoxShape3D_3s7q0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_6"]
+mesh = SubResource("BoxMesh_mbs7q")
+
+[node name="Block_1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.01349, 0.5, 4.64621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_1"]
+shape = SubResource("BoxShape3D_7na7x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_1"]
+mesh = SubResource("BoxMesh_3pmv0")
+
+[node name="Block_3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86524, 0.5, -2.80568)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_3"]
+shape = SubResource("BoxShape3D_wcb8a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_3"]
+mesh = SubResource("BoxMesh_lt25c")
+
+[node name="Block_2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.98419, 0.500001, 8.02077)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_2"]
+shape = SubResource("BoxShape3D_eb5vn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_2"]
+mesh = SubResource("BoxMesh_05727")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_m3vsy")

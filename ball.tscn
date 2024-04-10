@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btjwsjvg8tmn0"]
+
+[ext_resource type="PackedScene" uid="uid://mmkctq4hdm4x" path="res://Tai_Chi_Ball_.gltf" id="1_ufb6m"]
+
+[node name="Ball" instance=ExtResource("1_ufb6m")]
+
+[node name="Sphere" parent="." index="0"]
+transform = Transform3D(1.58339, 0, 0, 0, 1.58339, 0, 0, 0, 1.58339, 0.00362062, -0.0323617, 0.00602245)
