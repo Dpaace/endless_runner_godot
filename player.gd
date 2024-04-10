@@ -17,8 +17,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir = Vector2(0, 0)  # Initialize input direction as (0, 0)
+	if Input.is_action_pressed("ui_left"):
+		input_dir.x -= 1  # Move left
+	if Input.is_action_pressed("ui_right"):
+		input_dir.x += 1  # Move right
+
+	var direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -31,9 +36,3 @@ func _physics_process(delta):
 	if collision:
 		print("Collided with: ", collision.get_collider())
 		#get_tree().quit()
-	
-
-
-func _on_child_entered_tree(node):
-	if node.is_in_group("Boulder"):
-		get_tree().quit()
