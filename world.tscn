@@ -38,6 +38,7 @@ shape = SubResource("SphereShape3D_to3la")
 
 [node name="Camera3D" type="Camera3D" parent="Ball/CollisionShape3D"]
 transform = Transform3D(1.66667, 0, 0, 0, 1.56153, 0.582589, 0, -0.582589, 1.56153, 0, 1.56738, 1.58143)
+current = true
 fov = 90.6
 
 [node name="TerrainController" parent="." instance=ExtResource("1_wvryj")]

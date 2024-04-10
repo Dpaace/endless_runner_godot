@@ -51,6 +51,8 @@ func _progress_terrain(delta: float) -> void:
 		add_child(block)
 		terrain_belt.append(block)
 		first_terrain.queue_free()
+		
+		
 
 
 func _append_to_far_edge(target_block: MeshInstance3D, appending_block: MeshInstance3D) -> void:
